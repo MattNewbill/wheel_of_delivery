@@ -17,7 +17,7 @@ var angularVelocity = 0;
 
 function startRotate() {
 	if (angularVelocity <= 0) {
-		angularVelocity = Math.random() * 0.2;
+		angularVelocity = (Math.random() + 0.5) * 0.2;
 		rotate();
 	}
 }
