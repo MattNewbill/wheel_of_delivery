@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+<?php include('getMerchants.php'); ?>
 <title>Wheel of Delivery</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" href="css/bootstrap.min.css">
