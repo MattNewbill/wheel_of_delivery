@@ -102,12 +102,16 @@ Zip Code <input type="text">
 	</tr>
 	<tr>
 		<td>Stickers</td>
-		<td>1.805.404.7388</td>
-		<td>3064 Divernon Ave Simi Valley, CA</td>
+		<td><a href="callto://+1.805.404.7388">1.805.404.7388</a></td>
+		<td><a target="_blank"
+			   href="https://www.google.com/maps/dir/3064 Divernon Ave Simi Valley, CA">
+			   3064 Divernon Ave Simi Valley, CA</a></td>
 		<td>6.5 miles</td>
-		<td>www.stickers.com</td>
+		<td><a target="_blank"
+			   href="https://www.google.com">www.google.com</a></td>
 		<td>3.7 stars out of 5</td>
-		<td>link to delivery</td>
+		<td><a target="_blank"
+			   href="https://www.delivery.com">link to delivery</a></td>
 	</tr>
 	
 </table>
