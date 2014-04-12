@@ -26,13 +26,20 @@ function startRotate() {
 function rotate() {
 	angle += angularVelocity;
 	if (angle > Math.PI * 2) angle -= Math.PI * 2;
-	angularVelocity -= 0.001;
+	angularVelocity -= 0.002;
 	draw();
 	if (angularVelocity > 0) {
 		setTimeout("rotate()", 33);
 	}
 	else {
-		alert("You landed on " + items[Math.floor((-angle + Math.PI * 7 / 2) * items.length / Math.PI / 2) % items.length]);
+		// spin finished, add item to history
+		var item = items[Math.floor((-angle + Math.PI * 7 / 2) * items.length / Math.PI / 2) % items.length];
+		var div = document.createElement("div");
+		var anchor = document.createElement("a");
+		anchor.href = "javascript:alert('You just ordered " + item + "!')";
+		anchor.appendChild(document.createTextNode(item));
+		div.appendChild(anchor);
+		document.getElementById("history").appendChild(div);
 	}
 }
 
@@ -80,6 +87,8 @@ Zip Code <input type="text">
 
 <canvas id="spinner" width="500" height="500">
 </canvas>
+
+<div id="history">Your spin history:</div>
 
 <table class="table-striped table">
 	<tr>
