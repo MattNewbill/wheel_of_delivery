@@ -33,6 +33,15 @@ function objectToArray($d) {
 		}
 	}
 
+	
+function getMerchantsNames() {
+		$merchants = $json['merchants'];
+		$names = array();
+		foreach ( $merchants as $merchant) {
+			$names[] = $merchant['summary']['name'];
+		}
+		return $names;
+	}
 
 
 $url = 'https://api.delivery.com/api/merchant/search/delivery?address=23330+Calvert+St,+91367&client_id=MDlkMzY3Nzg3MjU1ZjRkNmY4OWZjNDA0NjBjMTI0MWZl';
