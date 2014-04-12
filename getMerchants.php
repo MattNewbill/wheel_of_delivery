@@ -49,6 +49,7 @@ $json = json_decode(curl_get_contents($url));
 $json = objectToArray($json);
 
 $merchants = $json['merchants'];
+
 /*$t1 =  $_POST['t1'];
 $t2 =  $_POST['t2'];*/
 //header('Location: http://yoursite.com/page2.php?t1='.$t1.'&t2='.$t2);

@@ -81,5 +81,28 @@ Zip Code <input type="text">
 <canvas id="spinner" width="500" height="500">
 </canvas>
 
+<table class="table-striped table">
+	<tr>
+		<th>Name</th>
+		<th>Phone #</th>
+		<th>Address</th>
+		<th>Distance</th>
+		<th>Website</th>
+		<th>Ratings(# of Raters)</th>
+		<th>Delivery!</th>
+	</tr>
+	<tr>
+		<td>Stickers</td>
+		<td>1.805.404.7388</td>
+		<td>3064 Divernon Ave Simi Valley, CA</td>
+		<td>6.5 miles</td>
+		<td>www.stickers.com</td>
+		<td>3.7 stars out of 5</td>
+		<td>link to delivery</td>
+	</tr>
+	
+</table>
+
+
 </body>
 </html>
