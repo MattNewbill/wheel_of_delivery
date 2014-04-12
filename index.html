@@ -25,7 +25,7 @@ function startRotate() {
 function rotate() {
 	angle += angularVelocity;
 	if (angle > Math.PI * 2) angle -= Math.PI * 2;
-	angularVelocity -= 0.001;
+	angularVelocity -= 0.002;
 	draw();
 	if (angularVelocity > 0) {
 		setTimeout("rotate()", 33);
