@@ -1,0 +1,67 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+
+<script>
+function rotate() {
+	var first = true;
+	for(var i = 1; i<12;i++) {
+		if(first == 'false' && i == 1)
+			$('#item11').css('background-color', 'white');
+		else 
+			$('#item' + (i-1).css('background-color', 'white');
+		$('#item' + i).css('background-color', 'red');
+		
+	}
+	
+
+}
+
+</script>
+
+
+</head>
+<body>
+<h1>Spin the Wheel</h1>
+Enter Preferences<br>
+<form>
+Zip Code <input type="text"></input>
+</form>
+
+<button onclick="rotate();" class="btn btn-default">Click to Start</button>
+
+
+<div class="spinner_container">
+
+
+	<div id="item1" class="spinner_item">
+	</div>
+	<div id="item2" class="spinner_item">
+	</div>
+	<div id="item3" class="spinner_item">
+	</div>
+	<div id="item4" class="spinner_item">
+	</div>
+	<div id="item5" class="spinner_item">
+	</div>
+	<div id="item6" class="spinner_item">
+	</div>
+	<div id="item7" class="spinner_item">
+	</div>
+	<div id="item8" class="spinner_item">
+	</div>
+	<div id="item9" class="spinner_item">
+	</div>
+	<div id="item10" class="spinner_item">
+	</div>
+	<div id="item11" class="spinner_item">
+	</div>
+
+</div>
+
+</body>
+</html>
