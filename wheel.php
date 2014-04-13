@@ -98,6 +98,7 @@ function rotate() {
 														+ '<td>' + merchant.location.distance.toFixed(2) + ' miles</td>'
 														+ '<td>' + merchant.summary.overall_rating + '% (' + merchant.summary.num_ratings + ' ratings)</td>'
 														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">Deliver it!</a></td></tr>');
+		$("html, body").animate({ scrollTop: $(document).height() }, 1000);
 		// if there are queued merchants, replace that merchant with new one
 		if (queuedMerchants.length > 0) {
 			merchants[merchantIndex] = queuedMerchants.shift();
