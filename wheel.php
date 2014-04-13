@@ -83,7 +83,7 @@ function draw() {
 	// apply strokes
 	ctx.stroke();
 	// text
-	ctx.font = "16px serif";
+	ctx.font = "13px serif";
 	for (var i = 0; i < merchants.length; i++) {
 		ctx.save();
 		ctx.translate(canvas.width / 2, canvas.height / 2);
