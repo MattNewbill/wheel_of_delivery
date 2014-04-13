@@ -54,7 +54,7 @@ function rotate() {
 		// spin finished, add item to history
 		var merchant = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length];
 		$('#history_table tr:last').after('<tr>'
-														+ '<td>' + merchant.summary.name + '</td>'
+														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">' + merchant.summary.name + '</a></td>'
 														+ '<td>' + merchant.summary.phone + '</td>'
 														+ '<td><a target="_blank" href="https://www.google.com/maps?q=' + getAddress(merchant.location) + '">' + getAddressHtml(merchant.location) + '</a></td>'
 														+ '<td>' + merchant.location.distance.toFixed(2) + ' miles</td>'
