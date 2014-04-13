@@ -11,8 +11,8 @@
 
 <script type="text/javascript">
 var radius = 250;
-var jsonQuery = [<?php echo $json; ?>];
-var merchants = jsonQuery[0].merchants;
+var jsonQuery = <?php echo $json; ?>;
+var merchants = jsonQuery.merchants;
 
 var angle = 0;
 var angularVelocity = 0;
