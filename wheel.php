@@ -102,14 +102,13 @@ function draw() {
 
 </head>
 <body onload="draw()">
-<h1>Wheel of Delivery</h1>
+<h1 style="text-align: center">Wheel of Delivery</h1>
 
-<div>
-<button onclick="window.location = '.'" class="btn btn-default">Back</button>&nbsp;&nbsp;<button onclick="startRotate()" class="btn btn-default">Spin the Wheel!</button>
-</div>
-
+<div style="text-align: center">
+<button onclick="window.location = '.'" class="btn btn-default">Back</button>&nbsp;&nbsp;<button onclick="startRotate()" class="btn btn-default">Spin the Wheel!</button><br>
 <canvas id="spinner" width="600" height="600">
 </canvas>
+</div>
 
 <table id="history_table" class="table-striped table">
 	<tr>
