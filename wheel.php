@@ -42,6 +42,28 @@ function getAddressHtml(location) {
 
 }
 
+function addDotsToPhoneNumber(phone_number) { 
+	phone_number = removeDashesPhoneNumber(phone_number);
+	//calculate elapsed time here 
+	if(phone_number == null)
+		return "";
+	if(phone_number.length == 10) 
+		phone_number = "1" + phone_number;
+	var number = phone_number.substr(0,1) + ".";
+	number += phone_number.substr(1,3) + ".";
+	number += phone_number.substr(4,3) + "."; 
+	number += phone_number.substr(7,4);
+	return number; 
+}
+
+function removeDashesPhoneNumber(phone_number) {
+	var number = phone_number.substr(0,3);
+	number += phone_number.substr(4,3);
+	number += phone_number.substr(8,4);
+	return number;
+}
+
+
 function rotate() {
 	angle += angularVelocity;
 	if (angle > Math.PI * 2) angle -= Math.PI * 2;
@@ -54,12 +76,12 @@ function rotate() {
 		// spin finished, add item to history
 		var merchant = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length];
 		$('#history_table tr:last').after('<tr>'
-														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">' + merchant.summary.name + '</a></td>'
-														+ '<td>' + merchant.summary.phone + '</td>'
-														+ '<td><a target="_blank" href="https://www.google.com/maps?q=' + getAddress(merchant.location) + '">' + getAddressHtml(merchant.location) + '</a></td>'
-														+ '<td>' + merchant.location.distance.toFixed(2) + ' miles</td>'
-														+ '<td>' + merchant.summary.overall_rating + '% (' + merchant.summary.num_ratings + ' ratings)</td>'
-														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">link to delivery</a></td></tr>');
+												+ '<td>' + merchant.summary.name + '</td>'
+												+ '<td><a target="_blank" href="callto://+' + addDotsToPhoneNumber(merchant.summary.phone) + '">' + merchant.summary.phone + '</a> </td>'
+												+ '<td><a target="_blank" href="https://www.google.com/maps?q=' + getAddress(merchant.location) + '">' + getAddressHtml(merchant.location) + '</a></td>'
+												+ '<td>' + merchant.location.distance + ' miles</td>'
+												+ '<td>' + merchant.summary.overall_rating + '% (' + merchant.summary.num_ratings + ' ratings)</td>'
+												+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">link to delivery</a></td></tr>');
 		
 	}
 }
