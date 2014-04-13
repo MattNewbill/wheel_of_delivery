@@ -29,6 +29,15 @@ function getAddress(location) {
  var city = location.city;
  var state = location.state;
  var zip = location.zip;
+ return street + ", " + city + ", " + state + " " + zip;
+
+}
+
+function getAddressHtml(location) {
+ var street = location.street;
+ var city = location.city;
+ var state = location.state;
+ var zip = location.zip;
  return street + " <br>" + city + ", " + state + " " + zip;
 
 }
@@ -46,12 +55,11 @@ function rotate() {
 		var merchant = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length];
 		$('#history_table tr:last').after('<tr>'
 														+ '<td>' + merchant.summary.name + '</td>'
-														+ '<td>' + merchant.summary.phone +' </td>'
-														+ '<td>' + getAddress(merchant.location) + '</td>'
-														+ '<td>'+ merchant.location.distance + ' miles</td>'
-														+ '<td>URL</td>'
-														+ '<td>'+ merchant.summary.url.complete + '</td>'
-														+ '<td>'+ merchant.summary.overall_rating + ' stars out of 5 (' + merchant.summary.num_ratings + ')</td></tr>');
+														+ '<td>' + merchant.summary.phone + '</td>'
+														+ '<td><a target="_blank" href="https://www.google.com/maps?q=' + getAddress(merchant.location) + '">' + getAddressHtml(merchant.location) + '</a></td>'
+														+ '<td>' + merchant.location.distance + ' miles</td>'
+														+ '<td>' + merchant.summary.overall_rating + '% (' + merchant.summary.num_ratings + ' ratings)</td>'
+														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">link to delivery</a></td></tr>');
 		
 	}
 }
@@ -102,7 +110,6 @@ function draw() {
 		<th>Phone #</th>
 		<th>Address</th>
 		<th>Distance</th>
-		<th>Website</th>
 		<th>Ratings(# of Raters)</th>
 		<th>Delivery!</th>
 	</tr>
