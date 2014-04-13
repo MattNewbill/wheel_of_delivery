@@ -12,7 +12,8 @@
 <script type="text/javascript">
 var radius = 250;
 var jsonQuery = <?php echo $json; ?>;
-var merchants = jsonQuery.merchants;
+var merchants = jsonQuery.merchants.slice(0, 15);
+var queuedMerchants = jsonQuery.merchants.slice(15);
 
 var angle = 0;
 var angularVelocity = 0;
@@ -52,7 +53,8 @@ function rotate() {
 	}
 	else {
 		// spin finished, add item to history
-		var merchant = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length];
+		var merchantIndex = Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length;
+		var merchant = merchants[merchantIndex];
 		$('#history_table tr:last').after('<tr>'
 														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">' + merchant.summary.name + '</a></td>'
 														// I think delivery.com only serves US, so ok to assume phone international code is 1
@@ -61,7 +63,10 @@ function rotate() {
 														+ '<td>' + merchant.location.distance.toFixed(2) + ' miles</td>'
 														+ '<td>' + merchant.summary.overall_rating + '% (' + merchant.summary.num_ratings + ' ratings)</td>'
 														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">link to delivery</a></td></tr>');
-		
+		// if there are queued merchants, replace that merchant with new one
+		if (queuedMerchants.length > 0) {
+			merchants[merchantIndex] = queuedMerchants.shift();
+		}
 	}
 }
 
