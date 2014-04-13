@@ -93,7 +93,7 @@ function draw() {
 		ctx.save();
 		ctx.translate(canvas.width / 2, canvas.height / 2);
 		ctx.rotate(angle + (i + 0.5) * 2 * Math.PI / merchants.length);
-		ctx.fillText(merchants[i].summary.name, 50, 10);
+		ctx.fillText(merchants[i].summary.name, 50, 6.5);
 		ctx.restore();
 	}
 }
