@@ -57,7 +57,7 @@ function rotate() {
 														+ '<td>' + merchant.summary.name + '</td>'
 														+ '<td>' + merchant.summary.phone + '</td>'
 														+ '<td><a target="_blank" href="https://www.google.com/maps?q=' + getAddress(merchant.location) + '">' + getAddressHtml(merchant.location) + '</a></td>'
-														+ '<td>' + merchant.location.distance + ' miles</td>'
+														+ '<td>' + merchant.location.distance.toFixed(2) + ' miles</td>'
 														+ '<td>' + merchant.summary.overall_rating + '% (' + merchant.summary.num_ratings + ' ratings)</td>'
 														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">link to delivery</a></td></tr>');
 		
