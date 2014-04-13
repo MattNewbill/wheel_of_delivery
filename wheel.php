@@ -14,22 +14,43 @@ var radius = 250;
 var jsonQuery = <?php echo $json; ?>;
 var merchants = jsonQuery.merchants.slice(0, 15);
 var queuedMerchants = jsonQuery.merchants.slice(15);
+var category = "<?php echo $_POST['category_select']; ?>";
 
 var angle = 0;
 var angularVelocity = 0;
 
 function load() {
-	if (merchants) {
-		draw();
+	if (jsonQuery.merchants) {
+		// set merchants of correct category
+		var merchantsTemp = jsonQuery.merchants;
+		if (category) {
+			for (var i = merchantsTemp.length - 1; i >= 0; i--) { // iterate in reverse so don't have to update index if remove element
+				if (merchantsTemp[i].summary.type != category) {
+					merchantsTemp.splice(i, 1);
+				}
+			}
+		}
+		if (merchantsTemp.length > 0) {
+			merchants = merchantsTemp.slice(0, 15);
+			queuedMerchants = merchantsTemp.slice(15);
+			// draw the spinner
+			draw();
+		}
+		else {
+			// no merchants found
+			fail("No merchants of specified type found.");
+		}
 	}
 	else {
 		// display error
-		document.getElementById("success_div").style.display = "none";
-		document.getElementById("fail_div").style.display = "";
-		if (jsonQuery && jsonQuery.message && jsonQuery.message[0] && jsonQuery.message[0].user_msg) {
-			document.getElementById("fail_msg").firstChild.nodeValue = jsonQuery.message[0].user_msg;
-		}
+		fail((jsonQuery && jsonQuery.message && jsonQuery.message[0] && jsonQuery.message[0].user_msg) ? jsonQuery.message[0].user_msg : "There was an error.");
 	}
+}
+
+function fail(msg) {
+	document.getElementById("success_div").style.display = "none";
+	document.getElementById("fail_div").style.display = "";
+	document.getElementById("fail_msg").firstChild.nodeValue = msg;
 }
 
 function startRotate() {
