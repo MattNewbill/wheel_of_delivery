@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/styles.css">
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
 
 <script type="text/javascript">
 var radius = 250;
