@@ -76,14 +76,9 @@ function draw() {
 
 </head>
 <body onload="draw()">
-<h1>Spin the Wheel</h1>
+<h1>Wheel of Delivery</h1>
 <div>
-Enter Preferences<br>
-<form>
-Zip Code <input type="text">
-</form>
-
-<button onclick="startRotate()" class="btn btn-default">Click to Start</button>
+<button onclick="startRotate()" class="btn btn-default">Spin the Wheel!</button>
 </div>
 
 <canvas id="spinner" width="600" height="600">

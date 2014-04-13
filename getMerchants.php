@@ -36,6 +36,7 @@ function objectToArray($d) {
 	
 
 
-$url = 'https://api.delivery.com/api/merchant/search/delivery?address=23330+Calvert+St,+91367&client_id=MDlkMzY3Nzg3MjU1ZjRkNmY4OWZjNDA0NjBjMTI0MWZl';
+$url = "https://api.delivery.com/api/merchant/search/delivery?address=" . $_POST["address_text"] . "&client_id=MDlkMzY3Nzg3MjU1ZjRkNmY4OWZjNDA0NjBjMTI0MWZl";
+$url = str_replace(" ", "+", $url);
 $json = curl_get_contents($url);
 ?>
