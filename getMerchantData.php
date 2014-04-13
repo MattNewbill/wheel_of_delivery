@@ -46,7 +46,7 @@ $name = $_POST["name"];
 $merchants = $json['merchants'];
 
 $merchant = null;
-for( $i=0; $i<$merchants.length;$i++){
+for( $i=0; $i<count($merchants);$i++){
 	if(isset($merchants[i]['summary']['name']) && $merchant['summary']['name'] == $name)
 		$merchant = $merchants[i];
 }
