@@ -121,6 +121,16 @@ function draw() {
 	</tr>
 </table>
 
+<script>
+function goBack()
+  {
+  window.history.back()
+  }
+</script>
+
+<body>
+<button onclick="goBack()">Go Back</button>
+</body>
 
 </body>
 </html>
