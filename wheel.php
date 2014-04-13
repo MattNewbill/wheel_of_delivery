@@ -19,7 +19,7 @@ var angularVelocity = 0;
 
 function startRotate() {
 	if (angularVelocity <= 0) {
-		angularVelocity = (Math.random() + 0.5) * 0.2;
+		angularVelocity = (Math.random() + 0.75) * 0.3;
 		rotate();
 	}
 }
@@ -27,10 +27,10 @@ function startRotate() {
 function rotate() {
 	angle += angularVelocity;
 	if (angle > Math.PI * 2) angle -= Math.PI * 2;
-	angularVelocity -= 0.002;
+	angularVelocity -= 0.003;
 	draw();
 	if (angularVelocity > 0) {
-		setTimeout("rotate()", 33);
+		setTimeout("rotate()", 50);
 	}
 	else {
 		// spin finished, add item to history
