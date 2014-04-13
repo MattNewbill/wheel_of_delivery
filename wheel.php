@@ -44,12 +44,6 @@ function rotate() {
 	else {
 		// spin finished, add item to history
 		var merchant = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length];
-		var div = document.createElement("div");
-		var anchor = document.createElement("a");
-		anchor.href = "javascript:alert('You just ordered " + merchant.summary.name + "!')";
-		anchor.appendChild(document.createTextNode(merchant.summary.name));
-		div.appendChild(anchor);
-		document.getElementById("history").appendChild(div);
 		$('#history_table tr:last').after('<tr>'
 														+ '<td>' + merchant.summary.name + '</td>'
 														+ '<td>' + merchant.summary.phone +' </td>'
@@ -102,8 +96,6 @@ function draw() {
 <canvas id="spinner" width="600" height="600">
 </canvas>
 
-<div id="history">Your spin history:</div>
-
 <table id="history_table" class="table-striped table">
 	<tr>
 		<th>Name</th>
@@ -114,20 +106,6 @@ function draw() {
 		<th>Ratings(# of Raters)</th>
 		<th>Delivery!</th>
 	</tr>
-	<tr>
-		<td>Stickers</td>
-		<td><a href="callto://+1.805.404.7388">1.805.404.7388</a></td>
-		<td><a target="_blank"
-			   href="https://www.google.com/maps/dir/3064 Divernon Ave Simi Valley, CA">
-			   3064 Divernon Ave Simi Valley, CA</a></td>
-		<td>6.5 miles</td>
-		<td><a target="_blank"
-			   href="https://www.google.com">www.google.com</a></td>
-		<td>3.7 stars out of 5</td>
-		<td><a target="_blank"
-			   href="https://www.delivery.com">link to delivery</a></td>
-	</tr>
-	
 </table>
 
 
