@@ -107,10 +107,10 @@ function draw() {
 <table id="history_table" class="table-striped table">
 	<tr>
 		<th>Name</th>
-		<th>Phone #</th>
+		<th>Phone</th>
 		<th>Address</th>
 		<th>Distance</th>
-		<th>Ratings(# of Raters)</th>
+		<th>Rating</th>
 		<th>Delivery!</th>
 	</tr>
 </table>
