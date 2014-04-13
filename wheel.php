@@ -214,7 +214,7 @@ function colorPixel(pixelPos)
 
 </head>
 <body onload="load()">
-<h1 style="text-align: center">Wheel of Delivery</h1>
+<h1 class="header">Wheel of Delivery</h1>
 
 <div id="success_div">
 <div style="text-align: center">
