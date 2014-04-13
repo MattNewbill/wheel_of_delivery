@@ -55,7 +55,8 @@ function rotate() {
 		var merchant = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length];
 		$('#history_table tr:last').after('<tr>'
 														+ '<td><a target="_blank" href="' + merchant.summary.url.complete + '">' + merchant.summary.name + '</a></td>'
-														+ '<td>' + merchant.summary.phone + '</td>'
+														// I think delivery.com only serves US, so ok to assume phone international code is 1
+														+ '<td><a target="_blank" href="callto://+1.' + merchant.summary.phone.split("-").join(".") + '">' + merchant.summary.phone + '</a> </td>'
 														+ '<td><a target="_blank" href="https://www.google.com/maps?q=' + getAddress(merchant.location) + '">' + getAddressHtml(merchant.location) + '</a></td>'
 														+ '<td>' + merchant.location.distance.toFixed(2) + ' miles</td>'
 														+ '<td>' + merchant.summary.overall_rating + '% (' + merchant.summary.num_ratings + ' ratings)</td>'
