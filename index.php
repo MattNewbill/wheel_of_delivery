@@ -11,7 +11,8 @@
 
 <script type="text/javascript">
 var radius = 250;
-var items = [<?php echo getMerchantsNames($merchants); ?>];
+var jsonQuery = [<?php echo $json; ?>];
+var merchants = jsonQuery[0].merchants;
 
 var angle = 0;
 var angularVelocity = 0;
@@ -33,37 +34,13 @@ function rotate() {
 	}
 	else {
 		// spin finished, add item to history
-		var item = items[Math.floor((-angle + Math.PI * 7 / 2) * items.length / Math.PI / 2) % items.length];
+		var item = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length].summary.name;
 		var div = document.createElement("div");
 		var anchor = document.createElement("a");
 		anchor.href = "javascript:alert('You just ordered " + item + "!')";
 		anchor.appendChild(document.createTextNode(item));
 		div.appendChild(anchor);
 		document.getElementById("history").appendChild(div);
-		
-		$.ajax({
-			url: "getMerchantData.php",
-			type: "POST",
-			data: item,
-			dataType: 'json',
-			success: function(data) {
-			if(data != null){
-					alert('success');
-					$('#history_table tr:last').after('<tr>'
-															+ '<td>Name</td>'
-															+ '<td>Address</td>'
-															+ '<td>Phone#</td>'
-															+ '<td>Dist</td>'
-															+ '<td>Name</td>'
-															+ '<td>Name</td>'
-															+ '<td>Name</td>' +
-														'</tr>');
-			}
-			else
-				alert('failed');
-			}
-		});
-		
 	}
 }
 
@@ -77,8 +54,8 @@ function draw() {
 	ctx.beginPath();
 	ctx.arc(canvas.width / 2, canvas.height / 2, radius, 0, 2 * Math.PI);
 	// lines
-	for (var i = 0; i < items.length; i++) {
-		var lineAngle = angle + i * 2 * Math.PI / items.length;
+	for (var i = 0; i < merchants.length; i++) {
+		var lineAngle = angle + i * 2 * Math.PI / merchants.length;
 		ctx.moveTo(canvas.width / 2, canvas.height / 2);
 		ctx.lineTo(canvas.width / 2 + radius * Math.cos(lineAngle), canvas.height / 2 + radius * Math.sin(lineAngle));
 	}
@@ -86,11 +63,11 @@ function draw() {
 	ctx.stroke();
 	// text
 	ctx.font = "16px serif";
-	for (var i = 0; i < items.length; i++) {
+	for (var i = 0; i < merchants.length; i++) {
 		ctx.save();
 		ctx.translate(canvas.width / 2, canvas.height / 2);
-		ctx.rotate(angle + (i + 0.5) * 2 * Math.PI / items.length);
-		ctx.fillText(items[i], 50, 10);
+		ctx.rotate(angle + (i + 0.5) * 2 * Math.PI / merchants.length);
+		ctx.fillText(merchants[i].summary.name, 50, 10);
 		ctx.restore();
 	}
 }
