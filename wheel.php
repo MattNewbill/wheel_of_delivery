@@ -18,6 +18,20 @@ var queuedMerchants = jsonQuery.merchants.slice(15);
 var angle = 0;
 var angularVelocity = 0;
 
+function load() {
+	if (merchants) {
+		draw();
+	}
+	else {
+		// display error
+		document.getElementById("success_div").style.display = "none";
+		document.getElementById("fail_div").style.display = "";
+		if (jsonQuery && jsonQuery.message && jsonQuery.message[0] && jsonQuery.message[0].user_msg) {
+			document.getElementById("fail_msg").firstChild.nodeValue = jsonQuery.message[0].user_msg;
+		}
+	}
+}
+
 function startRotate() {
 	if (angularVelocity <= 0) {
 		angularVelocity = (Math.random() + 0.75) * 0.3;
@@ -101,9 +115,10 @@ function draw() {
 
 
 </head>
-<body onload="draw()">
+<body onload="load()">
 <h1 style="text-align: center">Wheel of Delivery</h1>
 
+<div id="success_div">
 <div style="text-align: center">
 <button onclick="window.location = '.'" class="btn btn-default">Back</button>&nbsp;&nbsp;<button onclick="startRotate()" class="btn btn-default">Spin the Wheel!</button><br>
 <canvas id="spinner" width="600" height="600">
@@ -120,6 +135,11 @@ function draw() {
 		<th style="width: 16%">Delivery!</th>
 	</tr>
 </table>
+</div>
 
+<div id="fail_div" style="text-align: center; display: none">
+<div id="fail_msg">There was an error.</div>
+<button onclick="window.location = '.'" class="btn btn-default">Back</button>
+</div>
 </body>
 </html>
