@@ -103,8 +103,9 @@ function draw() {
 </head>
 <body onload="draw()">
 <h1>Wheel of Delivery</h1>
+
 <div>
-<button onclick="startRotate()" class="btn btn-default">Spin the Wheel!</button>
+<button onclick="window.location = '.'" class="btn btn-default">Back</button>&nbsp;&nbsp;<button onclick="startRotate()" class="btn btn-default">Spin the Wheel!</button>
 </div>
 
 <canvas id="spinner" width="600" height="600">
@@ -120,17 +121,6 @@ function draw() {
 		<th>Delivery!</th>
 	</tr>
 </table>
-
-<script>
-function goBack()
-  {
-  window.history.back()
-  }
-</script>
-
-<body>
-<button onclick="goBack()">Go Back</button>
-</body>
 
 </body>
 </html>
