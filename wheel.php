@@ -24,6 +24,15 @@ function startRotate() {
 	}
 }
 
+function getAddress(location) {
+ var street = location.street;
+ var city = location.city;
+ var state = location.state;
+ var zip = location.zip;
+ return street + " <br>" + city + ", " + state + " " + zip;
+
+}
+
 function rotate() {
 	angle += angularVelocity;
 	if (angle > Math.PI * 2) angle -= Math.PI * 2;
@@ -34,13 +43,22 @@ function rotate() {
 	}
 	else {
 		// spin finished, add item to history
-		var item = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length].summary.name;
+		var merchant = merchants[Math.floor((-angle + Math.PI * 7 / 2) * merchants.length / Math.PI / 2) % merchants.length];
 		var div = document.createElement("div");
 		var anchor = document.createElement("a");
-		anchor.href = "javascript:alert('You just ordered " + item + "!')";
-		anchor.appendChild(document.createTextNode(item));
+		anchor.href = "javascript:alert('You just ordered " + merchant.summary.name + "!')";
+		anchor.appendChild(document.createTextNode(merchant.summary.name));
 		div.appendChild(anchor);
 		document.getElementById("history").appendChild(div);
+		$('#history_table tr:last').after('<tr>'
+														+ '<td>' + merchant.summary.name + '</td>'
+														+ '<td>' + merchant.summary.phone +' </td>'
+														+ '<td>' + getAddress(merchant.location) + '</td>'
+														+ '<td>'+ merchant.location.distance + ' miles</td>'
+														+ '<td>URL</td>'
+														+ '<td>'+ merchant.summary.url.complete + '</td>'
+														+ '<td>'+ merchant.summary.overall_rating + ' stars out of 5 (' + merchant.summary.num_ratings + ')</td></tr>');
+		
 	}
 }
 
