@@ -10,8 +10,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
 
 <script type="text/javascript">
-var radius = 200;
-var items = ["hello world", "food", "water", "hacks", "zombies", "computers", "awesomeness", "stuff", "phone", "you die"];
+var radius = 250;
+var items = [<?php echo getMerchantsNames($merchants); ?>];
 
 var angle = 0;
 var angularVelocity = 0;
@@ -40,6 +40,30 @@ function rotate() {
 		anchor.appendChild(document.createTextNode(item));
 		div.appendChild(anchor);
 		document.getElementById("history").appendChild(div);
+		
+		$.ajax({
+			url: "getMerchantData.php",
+			type: "POST",
+			data: item,
+			dataType: 'json',
+			success: function(data) {
+			if(data != null){
+					alert('success');
+					$('#history_table tr:last').after('<tr>'
+															+ '<td>Name</td>'
+															+ '<td>Address</td>'
+															+ '<td>Phone#</td>'
+															+ '<td>Dist</td>'
+															+ '<td>Name</td>'
+															+ '<td>Name</td>'
+															+ '<td>Name</td>' +
+														'</tr>');
+			}
+			else
+				alert('failed');
+			}
+		});
+		
 	}
 }
 
@@ -61,7 +85,7 @@ function draw() {
 	// apply strokes
 	ctx.stroke();
 	// text
-	ctx.font = "20px serif";
+	ctx.font = "16px serif";
 	for (var i = 0; i < items.length; i++) {
 		ctx.save();
 		ctx.translate(canvas.width / 2, canvas.height / 2);
@@ -85,12 +109,12 @@ Zip Code <input type="text">
 <button onclick="startRotate()" class="btn btn-default">Click to Start</button>
 </div>
 
-<canvas id="spinner" width="500" height="500">
+<canvas id="spinner" width="600" height="600">
 </canvas>
 
 <div id="history">Your spin history:</div>
 
-<table class="table-striped table">
+<table id="history_table" class="table-striped table">
 	<tr>
 		<th>Name</th>
 		<th>Phone #</th>

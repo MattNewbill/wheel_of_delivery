@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 function curl_get_contents($url)
 {
   $ch = curl_init($url);
@@ -39,22 +42,14 @@ function objectToArray($d) {
 $url = 'https://api.delivery.com/api/merchant/search/delivery?address=23330+Calvert+St,+91367&client_id=MDlkMzY3Nzg3MjU1ZjRkNmY4OWZjNDA0NjBjMTI0MWZl';
 $json = json_decode(curl_get_contents($url));
 $json = objectToArray($json);
-
+$name = $_POST["name"];
 $merchants = $json['merchants'];
-$test = $merchants[0]['summary']['name'];
-echo var_dump($test);
-/*$t1 =  $_POST['t1'];
-$t2 =  $_POST['t2'];*/
-//header('Location: http://yoursite.com/page2.php?t1='.$t1.'&t2='.$t2);
-//$data = json_decode(file_get_contents('https:\/\/api.delivery.com\/api\/merchant\/search\/delivery?address=23330+Calvert+St,+91367&client_id=MDlkMzY3Nzg3MjU1ZjRkNmY4OWZjNDA0NjBjMTI0MWZl'));
 
-function getMerchantsNames($merchants) {
-		$names = "";
-		foreach ( $merchants as $merchant) {
-			$names = $names . '"' . $merchant['summary']['name'] . '", ';
-		}
-		$names = substr($names,0,(strlen($names)-2));
-		return $names;
-	}
+$merchant = null;
+for( $i=0; $i<$merchants.length;$i++){
+	if(isset($merchants[i]['summary']['name']) && $merchant['summary']['name'] == $name)
+		$merchant = $merchants[i];
+}
+return json_encode($merchant);
 
 ?>
