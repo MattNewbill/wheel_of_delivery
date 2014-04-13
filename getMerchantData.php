@@ -47,8 +47,8 @@ $merchants = $json['merchants'];
 
 $merchant = null;
 for( $i=0; $i<count($merchants);$i++){
-	if(isset($merchants[i]['summary']['name']) && $merchant['summary']['name'] == $name)
-		$merchant = $merchants[i];
+	if(isset($merchants[$i]['summary']['name']) && $merchant['summary']['name'] == $name)
+		$merchant = $merchants[$i];
 }
 return json_encode($merchant);
 
