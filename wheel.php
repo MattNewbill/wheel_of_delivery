@@ -112,12 +112,12 @@ function draw() {
 
 <table id="history_table" class="table-striped table">
 	<tr>
-		<th>Name</th>
-		<th>Phone</th>
-		<th>Address</th>
-		<th>Distance</th>
-		<th>Rating</th>
-		<th>Delivery!</th>
+		<th style="width: 16%">Name</th>
+		<th style="width: 16%">Phone</th>
+		<th style="width: 16%">Address</th>
+		<th style="width: 16%">Distance</th>
+		<th style="width: 16%">Rating</th>
+		<th style="width: 16%">Delivery!</th>
 	</tr>
 </table>
 
